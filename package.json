@@ -1,0 +1,22 @@
+{
+  "name": "web3getter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/joshocalico/web3getter.git",
+  "author": "Web3getter",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "contracts/*"
+  ],
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "turbo": "^1.8.2"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "turbo test"
+  }
+}
