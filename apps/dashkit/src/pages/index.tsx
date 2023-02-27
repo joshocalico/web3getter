@@ -59,8 +59,10 @@ export default function Home() {
         <RoomLogo style={{ opacity, scale }} />
       </div>
       <div
-        className={"flex flex-col items-center w-screen h-screen rounded-t-3xl"}
-        style={{ translate: "0 calc(100vh - 400px)" }}
+        className={"flex flex-col items-center w-screen h-screen"}
+        style={{ 
+          translate: "0 calc(100vh - 400px)",
+        }}
       >
         <motion.p
           className="text-center text-6xl pb-16"
@@ -71,6 +73,10 @@ export default function Home() {
         <div
           ref={introRef}
           className={"flex flex-col items-center bg-slate-200 w-screen h-full"}
+          style={{
+            borderTopLeftRadius: "50% 12%",
+            borderTopRightRadius: "50% 12%",
+          }}
         >
           <HiChevronUp
             className={"text-slate-500 text-4xl my-8"}
