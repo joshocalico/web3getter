@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Basement Grotesque";
+    font-weight: 800;
+    src: url("/fonts/BasementGrotesque-Black.woff2") format("woff2"),
+        url("/fonts/BasementGrotesque-Black.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Calluna";
+    font-weight: 400;
+    src: url("/fonts/Calluna-Regular.otf") format("otf");
+}

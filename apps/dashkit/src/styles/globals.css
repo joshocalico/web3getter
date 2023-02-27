@@ -1,3 +1,5 @@
+@import url('fonts.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,12 +7,14 @@
 :root {
     --color-primary: #0085FF;
     --color-primary-contrast: #fff;
+    --header-font: 'Basement Grotesque', sans-serif;
+    --body-font: 'Calluna', serif;
 }
 
 body, html {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--body-font);
   font-size: 16px;
   color: #333;
   background-color: #f5f5f5;
