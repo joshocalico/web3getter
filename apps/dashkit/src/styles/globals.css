@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --color-primary: #0085FF;
+    --color-primary-contrast: #fff;
+}
+
 body, html {
   margin: 0;
   padding: 0;
