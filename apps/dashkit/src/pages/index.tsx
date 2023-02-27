@@ -79,7 +79,7 @@ export default function Home() {
           }}
         >
           <HiChevronUp
-            className={"text-slate-500 text-4xl my-8"}
+            className={"text-slate-500 text-4xl mt-8 mb-2"}
             animate={{ y: [0, 10, 0] }}
             transition={{
               duration: 3,
@@ -87,6 +87,9 @@ export default function Home() {
               ease: "easeInOut",
             }}
           />
+          <span style={{ ...inter.style }} className={"mb-6"}>
+            Scroll
+          </span>
 
           <p className="text-center">
             My Room - &copy; 2023
