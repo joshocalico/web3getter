@@ -6,11 +6,13 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import Button from "@/components/button";
+// import Button from "@/components/Button";
 import BaseRoomLogo from "@/svg/room.svg";
 
 import { HiChevronUp as BaseHiChevronUp } from "react-icons/hi2";
 import React, { useRef, useEffect, useState } from "react";
+import { Web3Button } from '@web3modal/react';
+
 
 
 
@@ -41,15 +43,6 @@ export default function Home() {
 
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
-
-
-  const handleConnect = () => {
-    console.log("lets connect");
-  };
-
-
-  const notConnected = (<><br /><Button text="connect" onClick={handleConnect}></Button><br /></>)
-  const connected = (<><br />Dashboard<br /></>)
 
   return (
     <>
@@ -110,7 +103,9 @@ export default function Home() {
             <br />
             By Dino, Liang, Geoffrey and Josh.
           </p>
-          <div>{provider ? connected : notConnected}</div>
+          <br />
+          <Web3Button icon="hide" label="Connect Wallet" balance="show" />
+          <br />
         </div>
       </div>
     </>

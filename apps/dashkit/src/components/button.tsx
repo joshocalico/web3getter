@@ -1,62 +1,34 @@
 import React, { FC, useState } from 'react';
+import { useWeb3Modal } from '@web3modal/react';
+import { useAccount, useDisconnect } from 'wagmi';
 
-type ButtonProps = {
-  text: string;
-  onClick?: () => void;
-};
 
-const Button: FC<ButtonProps> = ({ text, onClick, }) => {
-  const [showModal, setShowModal] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // assuming the initial login state is false
+export default function Button() {
+  const [loading, setLoading] = useState(false);
+  const { open } = useWeb3Modal();
+  const { isConnected } = useAccount();
+  const { disconnect } = useDisconnect();
+  const label = isConnected ? "Disconnect" : "Connect";
 
-  const handleClick = () => {
-    if (onClick) {
-      onClick();
-    }
-    if (!isLoggedIn) {
-      setShowModal(true);
+  async function onOpen() {
+    setLoading(true)
+    await open()
+    setLoading(false)
+  }
+
+  function onClick() {
+    if (isConnected) {
+      disconnect()
     } else {
-      console.log("we have a user")
-      // handle click for connected user
+      onOpen()
     }
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
-
-
+  }
 
   return (
-    <>
-      {!isLoggedIn && ( // display the login button only if the user is not logged in
-        <button
-          onClick={handleClick}
-
-        >
-          {text}
-        </button>
-      )}
-      {showModal && (
-        <div
-          onClick={handleCloseModal}
-        >
-          <div
-            style={{
-              backgroundColor: '#fff',
-              padding: '2rem',
-              borderRadius: '5px',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2>Login form goes here</h2>
-            <button onClick={handleCloseModal}>Close</button>
-          </div>
-        </div>
-      )}
-    </>
+    <button onClick={onClick} disabled={loading}>
+      {loading ? 'Loading...' : label}
+    </button>
   );
 };
 
-export default Button;
+
