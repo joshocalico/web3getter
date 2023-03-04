@@ -2,7 +2,7 @@ import Head from "next/head";
 import { projectTitle } from "@/config";
 
 import React from "react";
-import { Button } from "@/components";
+import { Web3Button } from "@web3modal/react";
 
 export default function Home() {
   return (
