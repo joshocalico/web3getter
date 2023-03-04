@@ -12,7 +12,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 if (!process.env.NEXT_PUBLIC_PROJECT_ID) {
   throw new Error('You need to provide NEXT_PUBLIC_PROJECT_ID env variable')
 }
-const projectId = process.env.NEXT_PUBLIC_PROJECT_ID
+const projectId = process.env?.NEXT_PUBLIC_PROJECT_ID ?? ""
 
 // 2. Configure wagmi client
 const chains = [mainnet, polygon, avalanche, arbitrum, goerli, optimism, zkSyncTestnet]
