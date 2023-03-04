@@ -26,7 +26,7 @@ const client = createClient({
 })
 
 // 3. Configure modal ethereum client
-const ethereumClient = new EthereumClient(wagmiClient, chains)
+const ethereumClient = new EthereumClient(client, chains)
 
 const apolloClient = new ApolloClient({
     uri: 'https://api.lens.dev',
