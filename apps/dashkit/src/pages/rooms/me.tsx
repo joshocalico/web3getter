@@ -5,6 +5,7 @@ import { useAccount } from "wagmi"
 import { useUniversalResolver } from "@/utils"
 
 import { HiPaperAirplane } from "react-icons/hi2"
+import { useEffect } from "react"
 
 const RoomOfAccount: NextPage = () => {
   const { isConnected, address } = useAccount()
@@ -12,9 +13,11 @@ const RoomOfAccount: NextPage = () => {
 
   const router = useRouter()
 
-  if (!isConnected) {
-    router.push('/')
-  }
+  useEffect(() => {
+    if (!isConnected) {
+      router.push('/')
+    }
+  }, [isConnected, router])
 
   return <>
     <h1>Welcome 
