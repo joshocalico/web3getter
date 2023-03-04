@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #0085FF;
+  --color-primary: #00B68A;
   --color-primary-contrast: #fff;
   --header-font: 'Basement Grotesque', sans-serif;
   --body-font: 'Calluna', serif;
@@ -25,7 +25,7 @@ button {
   display: inline-block;
   padding: 0.3rem 3rem;
   border-radius: 50px;
-  background-color: #0085FF;
+  background-color: #00B68A;
   color: #fff;
   font-size: 1rem;
   text-align: center;
