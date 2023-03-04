@@ -5,6 +5,7 @@ import { Web3Modal } from '@web3modal/react'
 import { useEffect, useState } from 'react'
 import { configureChains, createClient, WagmiConfig } from 'wagmi'
 import { arbitrum, avalanche, goerli, mainnet, optimism, polygon, zkSyncTestnet } from 'wagmi/chains'
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 
 // 1. Get projectID at https://cloud.walletconnect.com
@@ -18,7 +19,7 @@ const chains = [mainnet, polygon, avalanche, arbitrum, goerli, optimism, zkSyncT
 
 const { provider } = configureChains(chains, [walletConnectProvider({ projectId })])
 
-const wagmiClient = createClient({
+const client = createClient({
   autoConnect: true,
   connectors: modalConnectors({ version: '2', appName: 'myRoom', chains, projectId }),
   provider
@@ -27,23 +28,18 @@ const wagmiClient = createClient({
 // 3. Configure modal ethereum client
 const ethereumClient = new EthereumClient(wagmiClient, chains)
 
+const apolloClient = new ApolloClient({
+    uri: 'https://api.lens.dev',
+    cache: new InMemoryCache(),
+});
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [ready, setReady] = useState(false)
-
-  useEffect(() => {
-    setReady(true)
-  }, [])
-
   return (
-    <>
-      {ready ? (
-        <WagmiConfig client={wagmiClient}>
-          <Component {...pageProps} />
-        </WagmiConfig>
-      ) : null}
-
-      <Web3Modal themeMode="light" themeColor="orange" themeBackground="themeColor" projectId={projectId} ethereumClient={ethereumClient} />
-    </>
+  <ApolloProvider client={apolloClient}>
+  <WagmiConfig client={client}>
+    <Component {...pageProps} />
+  </WagmiConfig>
+  <Web3Modal themeMode="light" themeColor="orange" themeBackground="themeColor" projectId={projectId} ethereumClient={ethereumClient} />
+  </ApolloProvider>
   )
 }
