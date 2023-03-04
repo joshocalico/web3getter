@@ -1,10 +1,19 @@
 import Head from "next/head";
 import { projectTitle } from "@/config";
-
-import React from "react";
+import { useEffect } from "react";
 import { Web3Button } from "@web3modal/react";
+import { useRouter } from "next/router";
+import { useAccount } from "wagmi";
 
 export default function Home() {
+  const router = useRouter()
+  const { isConnected } = useAccount()
+  
+  useEffect(() => {
+    if (isConnected)
+      router.push("/rooms/me")
+  }, [router, isConnected]);
+
   return (
     <>
       <Head>
