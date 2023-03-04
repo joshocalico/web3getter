@@ -2,7 +2,7 @@ import Head from "next/head";
 import { projectTitle } from "@/config";
 
 import React from "react";
-import { Button } from "@/components";
+import { Web3Button } from "@web3modal/react";
 
 export default function Home() {
   return (
@@ -32,9 +32,9 @@ export default function Home() {
             borderTopRightRadius: "50% 25%",
           }}
         >
-          <Button>
-            Connect Wallet
-          </Button>
+          <br />
+            <Web3Button icon="hide" label="Connect Wallet" balance="show" />
+          <br />
 
           <p className="text-center p-4 font-sans font-thin">
             My Room - &copy; 2023

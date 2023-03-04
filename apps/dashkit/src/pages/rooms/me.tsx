@@ -6,6 +6,7 @@ import { useUniversalResolver } from "@/utils"
 import { HiPaperAirplane } from "react-icons/hi2"
 
 import { NextPage } from "next"
+import { Button } from "@/components"
 
 const RoomOfAccount: NextPage = () => {
   const { isConnected, address } = useAccount()
@@ -24,9 +25,9 @@ const RoomOfAccount: NextPage = () => {
       <strong>{name ?? `${address?.slice(0, 8)}...`}</strong>
     </h1>
 
-    {isLens && <button>
+    {isLens && <Button>
       <HiPaperAirplane /> Share to Lenster
-    </button>}
+    </Button>}
   </>
 }
 

@@ -3520,6 +3520,19 @@
     buffer "6.0.3"
     valtio "1.10.2"
 
+"@web3modal/ethereum@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@web3modal/ethereum/-/ethereum-2.1.2.tgz#281456d494e13996ff0d970ef2dd5919f69d34da"
+  integrity sha512-fHcOKSR7VpX+O8doO/33/zywEWsRrKg8EwPGik0utgtLs0moT29zvQxxnf80Lwy+OAi6C201nb14oUDmxjSFzQ==
+
+"@web3modal/react@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@web3modal/react/-/react-2.1.2.tgz#9d4cdaa1fd0096e3b641a1014a657515d6a8a904"
+  integrity sha512-fIbK2d0G+r5cx+SbGTwWYMRCTpDsMzSgJOIt7skJcvVfHmB0DFNIp3yzcvepC3fOuEIiwXcNLVf53rtKPLsr0A==
+  dependencies:
+    "@web3modal/core" "2.1.2"
+    "@web3modal/ui" "2.1.2"
+
 "@web3modal/standalone@^2.1.1":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@web3modal/standalone/-/standalone-2.1.2.tgz#aa9cdd54bd5a6d79ae087cff43c25a7053e968be"
