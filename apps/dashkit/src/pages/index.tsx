@@ -1,59 +1,10 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
 import { projectTitle } from "@/config";
-import {
-  motion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
 
-import BaseRoomLogo from "@/svg/room.svg";
-import BaseDecoration from "@/svg/pretty.svg"
-
-import { HiChevronUp as BaseHiChevronUp } from "react-icons/hi2";
-import React, { useRef } from "react";
-
-const decorationVariants = {
-  hidden: {
-    opacity: [0, 1],
-  },
-  visible: {
-    opacity: 1,
-  },
-}
-
-const HiChevronUp = ({ ...props }) => (
-  <motion.i {...props}>
-    <BaseHiChevronUp />
-  </motion.i>
-); 
-
-const RoomLogo = motion(
-  React.forwardRef<HTMLDivElement>(function RoomLogo(props, ref) {
-    return <div ref={ref}>
-      <BaseRoomLogo {...props} />
-    </div>;
-  })
-);
-
-const Decoration = (props: any) => {
-  return <motion.div {...props}>
-    <BaseDecoration {...props} />
-  </motion.div>;
-}
-
-const inter = Inter({ subsets: ["latin"] });
+import React from "react";
+import { Button } from "@/components";
 
 export default function Home() {
-  const introRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    offset: ["start start", "end end"],
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 5]);
-
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-
   return (
     <>
       <Head>
@@ -63,59 +14,32 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div
-        className={
-          "flex flex-col justify-center items-center font-semibold text-6xl h-screen w-screen fixed"
-        }
+        className={"flex flex-col items-center justify-center w-screen h-screen"}
         style={{
           background: "var(--color-primary)",
           color: "var(--color-primary-contrast)",
         }}
       >
-        <RoomLogo style={{ opacity, scale }} />
-      </div>
-      <div
-        className={"flex flex-col items-center w-screen h-screen"}
-        style={{ 
-          translate: "0 calc(100vh - 400px)",
-        }}
-      >
-        <motion.p
-          className="text-center text-6xl pb-16"
-          style={{ color: "var(--color-primary-contrast)", fontFamily: "var(--header-font)", opacity }}
+        <p className="text-center text-3xl pb-16"
+          style={{ color: "var(--color-primary-contrast)", fontFamily: "var(--header-font)" }}
         >
           My Room
-        </motion.p>
+        </p>
         <div
-          ref={introRef}
-          className={"flex flex-col items-center bg-slate-200 w-screen h-full"}
+          className={"flex flex-col items-center bg-slate-200 w-screen fixed bottom-0 text-slate-900 pt-20 pb-8"}
           style={{
-            borderTopLeftRadius: "50% 12%",
-            borderTopRightRadius: "50% 12%",
+            borderTopLeftRadius: "50% 25%",
+            borderTopRightRadius: "50% 25%",
           }}
         >
-          <HiChevronUp
-            className={"text-slate-500 text-4xl mt-8 mb-2"}
-            animate={{ y: [0, 10, 0] }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <span style={{ ...inter.style }} className={"mb-6"}>
-            Scroll
-          </span>
+          <Button>
+            Connect Wallet
+          </Button>
 
-          <Decoration
-            initial="hidden"
-            whileInView="visible"
-            variants={decorationVariants}
-          />
-
-          <p className="text-center">
+          <p className="text-center p-4 font-sans font-thin">
             My Room - &copy; 2023
             <br />
-            Made for the ETHDenver #BUIDLathon 2023
+            Made with ♥ for ETHDenver #BUIDLathon 2023
             <br />
             By Dino, Liang, Geoffrey and Josh.
           </p>
