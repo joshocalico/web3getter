@@ -8,17 +8,26 @@ import {
 } from "framer-motion";
 
 import BaseRoomLogo from "@/svg/room.svg";
+import BaseDecoration from "@/svg/pretty.svg"
 
 import { HiChevronUp as BaseHiChevronUp } from "react-icons/hi2";
 import React, { useRef } from "react";
+
+const decorationVariants = {
+  hidden: {
+    opacity: [0, 1],
+  },
+  visible: {
+    opacity: 1,
+  },
+}
 
 const HiChevronUp = ({ ...props }) => (
   <motion.i {...props}>
     <BaseHiChevronUp />
   </motion.i>
-);
+); 
 
-// eslint-disable-next-line react/display-name
 const RoomLogo = motion(
   React.forwardRef<HTMLDivElement>(function RoomLogo(props, ref) {
     return <div ref={ref}>
@@ -26,6 +35,12 @@ const RoomLogo = motion(
     </div>;
   })
 );
+
+const Decoration = (props: any) => {
+  return <motion.div {...props}>
+    <BaseDecoration {...props} />
+  </motion.div>;
+}
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -90,6 +105,12 @@ export default function Home() {
           <span style={{ ...inter.style }} className={"mb-6"}>
             Scroll
           </span>
+
+          <Decoration
+            initial="hidden"
+            whileInView="visible"
+            variants={decorationVariants}
+          />
 
           <p className="text-center">
             My Room - &copy; 2023
