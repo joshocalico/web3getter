@@ -23,6 +23,8 @@ contract DashboardMinter is ERC721URIStorage, Ownable {
         _setTokenURI(newItemId, tokenURI);
     }
 
+    // TODO: Delete subaccounts on burn or transfer 
+
     // Verify signature of subaccount and add to subaccounts array
     function addSubaccount(address subaccount, uint64 deadline, bytes memory signature) external {
         bytes32 message = keccak256(abi.encodePacked(subaccount, deadline));
