@@ -4,13 +4,14 @@ import { useEffect } from "react";
 import { Web3Button } from "@web3modal/react";
 import { useRouter } from "next/router";
 import { useAccount } from "wagmi";
+import MagicPopup from "@/components/MagicPopup"
 
-import Rive, {Layout, Alignment, Fit} from '@rive-app/react-canvas';
+import Rive, { Layout, Alignment, Fit } from '@rive-app/react-canvas';
 
 export default function Home() {
   const router = useRouter()
   const { isConnected } = useAccount()
-  
+
   useEffect(() => {
     if (isConnected)
       router.push("/rooms/me")
@@ -35,9 +36,9 @@ export default function Home() {
           width: "200px",
           aspectRatio: "1 / 1",
         }}>
-        <Rive src="/ani/myroom.riv" layout={
-          new Layout({ fit: Fit.ScaleDown})
-        } />
+          <Rive src="/ani/myroom.riv" layout={
+            new Layout({ fit: Fit.ScaleDown })
+          } />
         </div>
         <p className="text-center text-2xl pb-16"
           style={{ color: "var(--color-primary-contrast)", fontFamily: "var(--header-font)" }}
@@ -52,7 +53,10 @@ export default function Home() {
           }}
         >
           <br />
-            <Web3Button icon="hide" label="Connect Wallet" balance="show" />
+          <MagicPopup />
+          <br />
+          <br />
+          <Web3Button icon="hide" label="Connect Wallet" balance="show" />
           <br />
 
           <p className="text-center p-4 font-sans font-thin">
