@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "UNLICENSED",
   "dependencies": {
+    "@openzeppelin/contracts": "^4.8.2",
     "ganache": "^7.7.5",
     "nodemon": "^2.0.20",
     "truffle": "^5.7.8"
