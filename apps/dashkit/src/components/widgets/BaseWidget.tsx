@@ -2,6 +2,7 @@ import { useDraggable } from '@dnd-kit/core';
 
 import { CSS } from '@dnd-kit/utilities';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { CSSProperties } from 'react';
 
 const variants: {
@@ -31,7 +32,7 @@ const variants: {
 };
 
 const BaseWidget = (props: any) => {
-  const { className, size, children, id } = props;
+  const { className, size, children, id, imageSrc, bgColor } = props;
   const { listeners, attributes, transform, isDragging, setNodeRef } =
     useDraggable({
       id,
@@ -53,10 +54,17 @@ const BaseWidget = (props: any) => {
       <div
         className="rounded-3xl w-full h-full"
         style={{
-          backgroundColor: 'var(--color-secondary)',
-          border: '2px solid var(--color-primary)',
+          backgroundColor: bgColor,
+          border: '3px solid var(--color-primary)',
         }}
       >
+        {imageSrc && (
+          <Image
+            src={imageSrc}
+            className="w-full h-full object-contain"
+            alt={imageSrc}
+          />
+        )}
         {children}
       </div>
     </div>

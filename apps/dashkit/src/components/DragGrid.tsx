@@ -9,6 +9,11 @@ import {
 import { SortableContext } from '@dnd-kit/sortable';
 import { Showcase } from '@/components';
 import BaseWidget from './widgets/BaseWidget';
+import FinancesWidget from './widgets/FinancesWidget';
+
+//Images
+import Food from '@/images/food.png';
+import Starbucks from '@/images/starbucks.png';
 
 const DragGrid = () => {
   const sensors = useSensors(
@@ -32,9 +37,23 @@ const DragGrid = () => {
               gridAutoRows: '3fr',
             }}
           >
-            <BaseWidget size="small" id="tiny" />
-            <BaseWidget size="small" id="tiny" />
-            <BaseWidget size="doubleTall" id="slender" />
+            <BaseWidget
+              size="small"
+              id="tiny"
+              imageSrc={Food}
+              bgColor={'var(--color-secondary)'}
+            />
+            <BaseWidget
+              size="small"
+              id="tiny"
+              imageSrc={Starbucks}
+              bgColor={'var(--color-secondary)'}
+            />
+            <FinancesWidget
+              size="doubleTall"
+              id="slender"
+              bgColor={'var(--color-primary)'}
+            />
             <BaseWidget size="doubleWide" id="wide" />
             <BaseWidget size="small" id="tiny" />
             <BaseWidget size="doubleWide" id="wide" />
