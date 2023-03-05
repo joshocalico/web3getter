@@ -17,7 +17,6 @@ const RoomOfAccount: NextPage = () => {
   const address = useDefaultOnHydration(_address as string, "unknown");
 
   const router = useRouter();
-
   useEffect(() => {
     if (status !== "connected") {
       router.push("/");
