@@ -46,7 +46,7 @@ export default function Home() {
           my room
         </p>
         <div
-          className={"flex flex-col items-center bg-slate-200 w-screen fixed bottom-0 text-slate-900 pt-20 pb-8"}
+          className={"flex flex-col items-center bg-slate-200 w-screen fixed bottom-0 text-slate-900"}
           style={{
             borderTopLeftRadius: "50% 25%",
             borderTopRightRadius: "50% 25%",
