@@ -54,7 +54,7 @@ export default function MagicPopup() {
 
   return (
     <>
-      <button className='rounded-full' onClick={openModal}>Connect with Magic 🪄</button>
+      <button className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded-md" onClick={openModal}>Connect with Magic ✨</button>
       {showModal && (
         <div className="popup-overlay min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
           {/* <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -90,14 +90,15 @@ export default function MagicPopup() {
                   >
                     Sign in
                   </button>
-                  <button onClick={closeModal}>X</button>
+
                 </div>
               </form>
 
               <div className="mt-6">
                 <div className="relative">
                   <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-300" />
+                    {/* <div className="w-full border-t border-gray-300" /> */}
+                    <button className="text-grey py-2 px-4 rounded-full" onClick={closeModal}>X</button>
                   </div>
                 </div>
 
