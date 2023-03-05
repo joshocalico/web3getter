@@ -1,8 +1,19 @@
-import Button from './Button';
-import Navigation from './Navigation';
-import IconButton from './IconButton';
-import Showcase from './Showcase';
-import Greeter from './Greeter';
-import DragGrid from './DragGrid';
+import BaseModal from "./modals/BaseModal";
+import Button from "./Button";
+import DragGrid from "./DragGrid";
+import Greeter from "./Greeter";
+import IconButton from "./IconButton";
+import Navigation from "./Navigation";
+import Showcase from "./Showcase";
+import MintModal from "./modals/MintModal";
 
-export { Button, Navigation, IconButton, Showcase, Greeter, DragGrid };
+export {
+  BaseModal,
+  Button,
+  DragGrid,
+  Greeter,
+  IconButton,
+  Navigation,
+  Showcase,
+  MintModal,
+};
