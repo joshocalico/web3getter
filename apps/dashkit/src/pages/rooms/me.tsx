@@ -18,12 +18,6 @@ const RoomOfAccount: NextPage = () => {
 
   const router = useRouter();
 
-  useEffect(() => {
-    if (status !== "connected") {
-      router.push("/");
-    }
-  }, [status, router]);
-
   return (
     <>
       <Navigation />
