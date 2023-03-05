@@ -14,12 +14,12 @@ export default function MagicPopup() {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState(null);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.currentTarget.value);
+  const handleChange = (event: FormEvent<HTMLInputElement>) => {
+    setEmail(event.currentTarget.value);
   };
   const router = useRouter()
-  const handleSignIn = async (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+  const handleSignIn = async (event: FormEvent<HTMLInputElement>) => {
+    event.preventDefault();
     console.log("boo ")
 
     const magic = new Magic(process.env.NEXT_PUBLIC_MAGIC_PUBLISHABLE_KEY as string);
@@ -70,7 +70,7 @@ export default function MagicPopup() {
 
           <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md" >
             <div className="py-8 px-4 shadow sm:rounded-lg sm:px-10" style={{ border: '1px solid var(--color-primary)' }}>
-              <form className="space-y-6" onSubmit={handleSignIn}>
+              <form className="space-y-6" onSubmit={handleSignIn as any}>
                 <div>
                   <div className="mt-1" style={{ fontFamily: 'var(--header-font)' }}>
                     <input
