@@ -26,6 +26,7 @@ const RoomOfAccount: NextPage = () => {
   return (
     <>
       <Navigation />
+<<<<<<< HEAD
       <div className="flex flex-col justify-center items-center">
         <div className="flex">
           <Greeter
@@ -48,6 +49,17 @@ const RoomOfAccount: NextPage = () => {
         <br />
         By Dino, Liang, Geoffrey and Josh.
       </p>
+=======
+      <h1>
+        Welcome{" "}
+        <strong>{name ?? `${address?.slice(0, 8) ?? "let's create a room"}!!!`}</strong>!
+      </h1>
+      {isLens && (
+        <Button>
+          <HiPaperAirplane /> Share to Lenster
+        </Button>
+      )}
+>>>>>>> b288c32 (added much prettier magic)
     </>
   );
 };

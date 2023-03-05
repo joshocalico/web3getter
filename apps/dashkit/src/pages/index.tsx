@@ -52,11 +52,12 @@ export default function Home() {
             borderTopRightRadius: "50% 25%",
           }}
         >
-          <br />
-          <MagicPopup />
-          <br />
+
           <br />
           <Web3Button icon="hide" label="Connect Wallet" balance="show" />
+          <br />
+          <br />
+          <MagicPopup />
           <br />
 
           <p className="text-center p-4 font-sans font-thin">
