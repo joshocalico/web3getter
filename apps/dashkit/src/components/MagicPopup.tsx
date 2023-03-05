@@ -1,7 +1,8 @@
 import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { Magic } from "magic-sdk";
 import { ethers } from "ethers";
-import { useAccount } from "wagmi";
+import { useRouter } from "next/router";
+
 
 type MagicPopupModalProps = {
   children: React.ReactNode;
@@ -21,20 +22,23 @@ export default function MagicPopup() {
     e.preventDefault();
     console.log("boo ")
 
-    // const magic = new Magic(process.env.NEXT_PUBLIC_MAGIC_PUBLISHABLE_KEY);
+    const magic = new Magic(process.env.NEXT_PUBLIC_MAGIC_PUBLISHABLE_KEY as string);
+    console.log("🚀 ~ file: MagicPopup.tsx:25 ~ handleSignIn ~ magic:", magic)
 
-    // const didToken = magic.auth.loginWithMagicLink({
-    //   email
-    // });
+    const didToken = magic.auth.loginWithMagicLink({
+      email
+    });
     // // 🌐 Send didToken to your backend API
 
-    // const provider = new ethers.providers.Web3Provider(magic.rpcProvider);
+    const provider = new ethers.providers.Web3Provider(magic.rpcProvider as any);
 
-    // const signer = provider.getSigner();
-    // const address = await signer.getAddress();
+    const signer = provider.getSigner();
+    const address = await signer.getAddress();
 
-    // setAddress(address);
+    setAddress(address as any);
+
   }
+
 
 
 
@@ -50,7 +54,7 @@ export default function MagicPopup() {
 
   return (
     <>
-      <button onClick={openModal}>Connect with Magic 🪄</button>
+      <button className='rounded-full' onClick={openModal}>Connect with Magic 🪄</button>
       {showModal && (
         <div className="popup-overlay min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
           {/* <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -65,17 +69,12 @@ export default function MagicPopup() {
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
               <form className="space-y-6" onSubmit={handleSignIn}>
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Email address
-                  </label>
                   <div className="mt-1">
                     <input
                       id="email"
                       name="email"
                       type="email"
+                      placeholder="email"
                       autoComplete="email"
                       required
                       className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -91,6 +90,7 @@ export default function MagicPopup() {
                   >
                     Sign in
                   </button>
+                  <button onClick={closeModal}>X</button>
                 </div>
               </form>
 
@@ -109,27 +109,5 @@ export default function MagicPopup() {
     </>
   );
 };
-    // <>
-      // <button onClick={openModal}> Connect with Magic 🪄</button>
-      // {showModal && (
-      //   <div className="popup-overlay">
-      //     <div className="popup-container">
-      //       <div className="popup-header">
-      //         <input
-      //           type="text"
-      //           id="email"
-      //           name="email"
-      //           placeholder="email"
-      //           onChange={handleChange}
-      //           value={email}
-      //         />
-      //       </div>
-      //       <button onClick={closeModal}>X</button>
-      //       {/* <div className="popup-content">
-      //         {children}
-      //       </div> */}
-      //     </div>
-      //   </div>
-      // )}s
-    // </>
+
 
