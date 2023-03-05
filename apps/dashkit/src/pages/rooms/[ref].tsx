@@ -27,6 +27,13 @@ const RoomWithRef: NextPage = () => {
                 This is a Lens Protocol user
             </p>
         }
+        <p className="text-center p-4 font-sans font-thin">
+            My Room - &copy; 2023
+            <br />
+            Made with ♥ for ETHDenver #BUIDLathon 2023
+            <br />
+            By Dino, Liang, Geoffrey and Josh.
+          </p>
     </>
 }
 

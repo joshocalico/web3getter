@@ -2,7 +2,6 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { EthereumClient, modalConnectors, walletConnectProvider } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/react'
-import { useEffect, useState } from 'react'
 import { configureChains, createClient, WagmiConfig } from 'wagmi'
 import { arbitrum, avalanche, goerli, mainnet, optimism, polygon, zkSyncTestnet } from 'wagmi/chains'
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";

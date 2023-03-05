@@ -16,8 +16,9 @@ function Button({ as = "button", className, ...props }: BaseButtonProps) {
   const Component = as;
   return (
     <Component
+      style={{ lineHeight: "18px"}}
       {...props}
-      className={`rounded px-8 py-2 text-xl font-sans bg-pumpkin-400 text-slate-800 shadow-md hover:bg-pumpkin-500 transition-colors active:bg-pumpkin-600 border-amber-100 flex flex-row items-center justify-between ${
+      className={`rounded px-2 text-sm font-sans bg-pumpkin-400 text-slate-800 shadow-md hover:bg-pumpkin-500 transition-colors active:bg-pumpkin-600 border-amber-100 flex flex-row items-center justify-between m-2 ${
         className ?? ""
       }`}
     />
