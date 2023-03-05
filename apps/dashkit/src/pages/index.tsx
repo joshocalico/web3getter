@@ -5,6 +5,8 @@ import { Web3Button } from "@web3modal/react";
 import { useRouter } from "next/router";
 import { useAccount } from "wagmi";
 
+import Rive, {Layout, Alignment, Fit} from '@rive-app/react-canvas';
+
 export default function Home() {
   const router = useRouter()
   const { isConnected } = useAccount()
@@ -29,10 +31,18 @@ export default function Home() {
           color: "var(--color-primary-contrast)",
         }}
       >
-        <p className="text-center text-3xl pb-16"
+        <div style={{
+          width: "200px",
+          aspectRatio: "1 / 1",
+        }}>
+        <Rive src="/ani/myroom.riv" layout={
+          new Layout({ fit: Fit.ScaleDown})
+        } />
+        </div>
+        <p className="text-center text-2xl pb-16"
           style={{ color: "var(--color-primary-contrast)", fontFamily: "var(--header-font)" }}
         >
-          My Room
+          my room
         </p>
         <div
           className={"flex flex-col items-center bg-slate-200 w-screen fixed bottom-0 text-slate-900 pt-20 pb-8"}
