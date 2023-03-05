@@ -58,6 +58,9 @@ module.exports = {
    */
 
   networks: {
+    dashboard: {
+    port: 24012,
+  }
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
     // You should run a client (like ganache, geth, or parity) in a separate terminal
@@ -117,6 +120,9 @@ module.exports = {
       // }
     }
   },
+  dashboard: {
+    port: 24012,
+  }
 
   // Truffle DB is currently disabled by default; to enable it, change enabled:
   // false to enabled: true. The default storage location can also be
