@@ -3,9 +3,28 @@ import type { AppProps } from 'next/app'
 import { EthereumClient, modalConnectors, walletConnectProvider } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/react'
 import { configureChains, createClient, WagmiConfig } from 'wagmi'
-import { arbitrum, avalanche, goerli, mainnet, optimism, polygon, zkSyncTestnet } from 'wagmi/chains'
+import { arbitrum, avalanche, baseGoerli, goerli, polygonMumbai, mainnet, optimism, polygon, zkSyncTestnet, Chain } from 'wagmi/chains'
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
+
+// 0. Configure custom chains like Scroll
+const scroll: Chain = {
+  id: 534353,
+  name: 'Scroll',
+  network: 'scroll',
+  nativeCurrency: {
+    name: 'ETH',
+    symbol: 'ETH',
+    decimals: 18
+  },
+  rpcUrls: {
+    default: { http: ['https://alpha-rpc.scroll.io/l2']},
+    public: { http: ['https://alpha-rpc.scroll.io/l2']}
+  },
+  blockExplorers: {
+    default: {url: 'https://blockscout.scroll.io', name: 'Scroll Block Explorer'},
+  }
+}
 
 // 1. Get projectID at https://cloud.walletconnect.com
 if (!process.env.NEXT_PUBLIC_PROJECT_ID) {
@@ -14,7 +33,7 @@ if (!process.env.NEXT_PUBLIC_PROJECT_ID) {
 const projectId = process.env?.NEXT_PUBLIC_PROJECT_ID ?? ""
 
 // 2. Configure wagmi client
-const chains = [mainnet, polygon, avalanche, arbitrum, goerli, optimism, zkSyncTestnet]
+const chains = [mainnet, polygon, polygonMumbai, avalanche, arbitrum, goerli, optimism, zkSyncTestnet, baseGoerli, scroll]
 
 const { provider } = configureChains(chains, [walletConnectProvider({ projectId })])
 

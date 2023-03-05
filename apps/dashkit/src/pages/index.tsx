@@ -5,16 +5,21 @@ import { Web3Button } from "@web3modal/react";
 import { useRouter } from "next/router";
 import { useAccount } from "wagmi";
 
-import Rive, {Layout, Alignment, Fit} from '@rive-app/react-canvas';
+import Rive, {Layout, Fit} from '@rive-app/react-canvas';
+import { MintModal } from "@/components";
+import { useHasNft } from "@/utils/wallet";
 
 export default function Home() {
   const router = useRouter()
-  const { isConnected } = useAccount()
-  
+  const { isConnected } = useAccount();
+
+  const hasRoom = useHasNft();
+
   useEffect(() => {
-    if (isConnected)
+    if (isConnected && hasRoom) {
       router.push("/rooms/me")
-  }, [router, isConnected]);
+    }
+  }, [isConnected, hasRoom, router])
 
   return (
     <>
@@ -64,6 +69,9 @@ export default function Home() {
           </p>
         </div>
       </div>
+      { isConnected && <MintModal onMint={() => {
+        router.push("/rooms/me")
+      }} />}
     </>
   );
 }
